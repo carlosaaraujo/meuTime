@@ -16,7 +16,7 @@ export const LoginPage = () => {
 
         <S.LoginPageForm>
           <label>Chave da API</label>
-          <input type="text" placeholder="Digite a chave da API" />
+          <input type="text" placeholder="Digite a chave da API" required />
 
           <S.Checkbox>
             <div>
