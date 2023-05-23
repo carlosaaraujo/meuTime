@@ -18,6 +18,12 @@ export const ContainerLoginPage = styled.div`
 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 100vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "login";
+  }
 `;
 
 export const AsideLoginPage = styled.aside`
@@ -30,14 +36,22 @@ export const AsideLoginPage = styled.aside`
   border-right: 1px solid #2c2c31;
   background-color: #18181b;
 
+  @media (max-width: 768px) {
+    img {
+      display: none;
+    }
+  }
+
   img {
-    width: 811px;
+    width: 100%;
+    max-width: 811px;
     height: 567px;
     animation: ${entering} 0.8s ease-in-out;
   }
 `;
 
 export const WrapperLoginPage = styled.div`
+  height: 100vh;
   grid-area: login;
 
   display: flex;
@@ -47,6 +61,10 @@ export const WrapperLoginPage = styled.div`
   flex-direction: column;
   color: #fff;
   animation: ${entering} 0.8s ease-in-out;
+
+  @media (max-width: 768px) {
+    padding: 0 12px;
+  }
 `;
 
 export const WelcomeLoginPage = styled.div`
