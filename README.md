@@ -9,6 +9,8 @@
   <img alt="Meu Time Login Page" src="https://github.com/carlosaaraujo/meuTime/assets/46418534/c8ba0aa5-a210-4eac-93ef-8377e8090e75" width="100%">
 </p>
 
+- [Figma Protótipo](https://www.figma.com/file/byuNFh1N3Dr4AipnLtcDa1/Meu-Time?type=design&t=q6sGbsU2ZI8w4iVT-1)
+
 ## 🚀 Tecnologias
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
