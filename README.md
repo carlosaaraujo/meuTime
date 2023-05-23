@@ -1,7 +1,7 @@
 <h1 align="center">
   ⚽ Meu Time
 </h1>
-<p align="center">Meu Time é um aplicativo online que faz uso do API Football para fornecer informações atualizadas sobre ligas e torneios de futebol em todo o mundo. Os usuários podem navegar por países, temporadas, ligas e times enquanto visualizam estatísticas como o número total de jogos, vitórias, derrotas e empates.</p>
+<p align="center">Meu Time é um projeto desenvolvido para o processo seletivo da Trade Technology e que faz uso do API Football para fornecer informações atualizadas sobre ligas e torneios de futebol em todo o mundo. Os usuários podem navegar por países, temporadas, ligas e times enquanto visualizam estatísticas como o número total de jogos, vitórias, derrotas e empates.</p>
 
 <br>
 
