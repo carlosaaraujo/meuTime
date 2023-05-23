@@ -9,7 +9,6 @@ export const ContainerTeamPage = styled.div`
 
 export const WrapperTeamPage = styled.div`
   width: 100%;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -20,16 +19,26 @@ export const WrapperTeamPage = styled.div`
 `;
 
 export const ContainerPlayers = styled.div`
-  width: 1200px;
+  width: 100%;
+  max-width: 1500px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
 
+  div {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+    border: 2px solid #2c2c31;
+  }
+
   img {
     width: 150px;
-    border: 2px solid #2c2c31;
-    border-radius: 5px;
   }
 `;
 
@@ -75,4 +84,12 @@ export const ContainerResults = styled.div`
   }
 `;
 
-export const ContainerStatistics = styled.div``;
+export const ContainerStatistics = styled.div`
+  max-width: 1500px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

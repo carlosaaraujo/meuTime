@@ -34,6 +34,7 @@ export const SelectPage = () => {
   } = useContext(AppStateContext);
 
   const navigate = useNavigate();
+  useProtected();
 
   useEffect(() => {
     const fetchData = async () => {

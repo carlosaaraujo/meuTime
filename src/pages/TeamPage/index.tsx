@@ -3,6 +3,46 @@ import JogadorImg from "../../assets/jordansportsite.jpg";
 import { useContext, useEffect, useState } from "react";
 import { AppStateContext } from "../../context/AppStateContext";
 import { getPlayers } from "../../services/endpoints";
+import Chart from "react-google-charts";
+
+const mockData = [
+  ["Tempo de Jogo", "Total"],
+  ["0-15", 4],
+  ["16-30", 17],
+  ["31-45", 11],
+];
+
+const options = {
+  title: "Gols Marcados por Tempo de Jogo",
+  backgroundColor: "transparent",
+  titleTextStyle: {
+    color: "#e8e8e8",
+  },
+  hAxis: {
+    title: "Tempo de Jogo",
+    minValue: 0,
+    textStyle: {
+      color: "#e8e8e8",
+    },
+    titleTextStyle: {
+      color: "#e8e8e8",
+    },
+  },
+  vAxis: {
+    title: "Total de Gols",
+    textStyle: {
+      color: "#e8e8e8",
+    },
+    titleTextStyle: {
+      color: "#e8e8e8",
+    },
+  },
+  legend: {
+    textStyle: {
+      color: "#e8e8e8",
+    },
+  },
+};
 
 export const TeamPage = () => {
   const { selectedTeam, selectedSeason } = useContext(AppStateContext);
@@ -30,20 +70,102 @@ export const TeamPage = () => {
       <S.WrapperTeamPage>
         <h1>Jogadores</h1>
         <S.ContainerPlayers>
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
-          <img src={JogadorImg} alt="" />
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
+          <div>
+            <img src={JogadorImg} alt="" />
+            <h2>Jordan</h2>
+            <small>30 anos</small>
+            <small>Brasileiro</small>
+          </div>
         </S.ContainerPlayers>
 
         <S.ContainerFormer>
@@ -75,6 +197,13 @@ export const TeamPage = () => {
 
         <S.ContainerStatistics>
           <h1>Gráfico</h1>
+          <Chart
+            chartType="BarChart"
+            width="100%"
+            height="400px"
+            data={mockData}
+            options={options}
+          />
         </S.ContainerStatistics>
       </S.WrapperTeamPage>
     </S.ContainerTeamPage>
