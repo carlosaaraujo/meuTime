@@ -1,0 +1,58 @@
+import { createApiInstance } from "./api";
+
+export const getCountries = async (apiKey: string) => {
+  const api = createApiInstance(apiKey);
+
+  return await api
+    .get("countries")
+    .then((res) => {
+      return res.data.response;
+    })
+    .catch((error) => console.log(error));
+};
+
+export const getSeason = async (apiKey: string) => {
+  const api = createApiInstance(apiKey);
+
+  return await api
+    .get("leagues/seasons")
+    .then((res) => {
+      return res.data.response;
+    })
+    .catch((error) => console.log(error));
+};
+
+export const getLeagues = async (
+  apiKey: string,
+  country: string,
+  season: string
+): Promise<any> => {
+  const api = createApiInstance(apiKey);
+
+  try {
+    const response = await api.get(`leagues?code=${country}&season=${season}`);
+    return response.data.response;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getTeam = async (
+  apiKey: string,
+  league: string,
+  season: string
+) => {
+  const api = createApiInstance(apiKey);
+
+  try {
+    const response = await api.get(
+      `standings?league=${league}&season=${season}`
+    );
+
+    return response.data.response[0].league.standings[0];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
