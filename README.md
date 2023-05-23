@@ -23,7 +23,7 @@ Faça um clone desse repositório e acesse o diretório.
 $ npm i
 
 # Executanto aplicação
-$ npm start
+$ npm run dev
 ```
 ---
 
