@@ -46,6 +46,8 @@ export const AsideLoginPage = styled.aside`
     width: 100%;
     max-width: 811px;
     height: 567px;
+
+    padding: 0 12px;
     animation: ${entering} 0.8s ease-in-out;
   }
 `;

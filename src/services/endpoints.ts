@@ -26,7 +26,7 @@ export const getLeagues = async (
   apiKey: string,
   country: string,
   season: string
-): Promise<any> => {
+) => {
   const api = createApiInstance(apiKey);
 
   try {
@@ -38,7 +38,7 @@ export const getLeagues = async (
   }
 };
 
-export const getTeam = async (
+export const getTeams = async (
   apiKey: string,
   league: string,
   season: string
@@ -51,6 +51,23 @@ export const getTeam = async (
     );
 
     return response.data.response[0].league.standings[0];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getPlayers = async (
+  apiKey: string,
+  team: string,
+  season: string
+) => {
+  const api = createApiInstance(apiKey);
+
+  try {
+    const response = await api.get(`players?team=${team}&season=${season}`);
+
+    return response.data.response;
   } catch (error) {
     console.log(error);
     return [];

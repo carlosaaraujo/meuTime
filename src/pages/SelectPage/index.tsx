@@ -4,7 +4,7 @@ import {
   getCountries,
   getLeagues,
   getSeason,
-  getTeam,
+  getTeams,
 } from "../../services/endpoints";
 import * as S from "./styles";
 import CelebrationImg from "../../assets/celebration.svg";
@@ -34,7 +34,6 @@ export const SelectPage = () => {
   } = useContext(AppStateContext);
 
   const navigate = useNavigate();
-  useProtected();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +71,7 @@ export const SelectPage = () => {
     const fetchData = async () => {
       const apiKey = localStorage.getItem("api_key");
 
-      const fetchedTeam = await getTeam(
+      const fetchedTeam = await getTeams(
         apiKey as string,
         selectedLeague,
         selectedSeason

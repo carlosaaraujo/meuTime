@@ -1,7 +1,30 @@
 import * as S from "./styles";
 import JogadorImg from "../../assets/jordansportsite.jpg";
+import { useContext, useEffect, useState } from "react";
+import { AppStateContext } from "../../context/AppStateContext";
+import { getPlayers } from "../../services/endpoints";
 
 export const TeamPage = () => {
+  const { selectedTeam, selectedSeason } = useContext(AppStateContext);
+  const [players, setPlayers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiKey = localStorage.getItem("api_key");
+
+      const fetchedPlayers = await getPlayers(
+        apiKey as string,
+        selectedTeam,
+        selectedSeason
+      );
+      setPlayers(fetchedPlayers);
+
+      console.log(players);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <S.ContainerTeamPage>
       <S.WrapperTeamPage>

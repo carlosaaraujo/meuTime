@@ -18,6 +18,12 @@ export const ContainerSelectPage = styled.div`
 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 100vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "select";
+  }
 `;
 
 export const AsideSelectPage = styled.aside`
@@ -31,20 +37,32 @@ export const AsideSelectPage = styled.aside`
   background-color: #18181b;
 
   img {
-    width: 811px;
+    width: 100%;
+    max-width: 811px;
+
     height: 567px;
     animation: ${entering} 0.8s ease-in-out;
+    padding: 0 12px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      display: none;
+    }
   }
 `;
 
 export const WrapperSelectPage = styled.div`
+  height: 100vh;
   grid-area: select;
+  padding: 12px;
 
   display: flex;
   justify-content: center;
 
   align-items: center;
   flex-direction: column;
+
   color: #fff;
   animation: ${entering} 0.8s ease-in-out;
 `;
