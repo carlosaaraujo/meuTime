@@ -17,7 +17,6 @@ export const ContainerSelectPage = styled.div`
   grid-template-areas: "aside select";
 
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100vh;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -34,7 +33,6 @@ export const AsideSelectPage = styled.aside`
   align-items: center;
 
   border-right: 1px solid #2c2c31;
-  background-color: #18181b;
 
   img {
     width: 100%;
@@ -53,7 +51,7 @@ export const AsideSelectPage = styled.aside`
 `;
 
 export const WrapperSelectPage = styled.div`
-  height: 100vh;
+  height: 90vh;
   grid-area: select;
   padding: 12px;
 
