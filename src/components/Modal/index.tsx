@@ -9,7 +9,7 @@ interface ModalProps {
   children: ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -44,7 +44,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     <S.ModalOverlay onClick={handleOverlayClick}>
       <S.ModalContent>
         <S.CloseButton onClick={onClose}>
-          <img src={CloseBtn} alt="Close" />
+          <img src={CloseBtn} alt="Botão para fechar o modal" />
         </S.CloseButton>
         {children}
       </S.ModalContent>
