@@ -66,7 +66,25 @@ export const getPlayers = async (
 
   try {
     const response = await api.get(`players?team=${team}&season=${season}`);
+    return response.data.response;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 
+export const getTeamStats = async (
+  apiKey: string,
+  league: string,
+  season: string,
+  team: string
+) => {
+  const api = createApiInstance(apiKey);
+
+  try {
+    const response = await api.get(
+      `teams/statistics?season=${season}&team=${team}&league=${league}`
+    );
     return response.data.response;
   } catch (error) {
     console.log(error);

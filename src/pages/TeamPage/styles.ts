@@ -32,12 +32,10 @@ export const ContainerPlayers = styled.div`
 
     justify-content: center;
     align-items: center;
-
-    border-radius: 5px;
-    border: 2px solid #2c2c31;
   }
 
   img {
+    border-radius: 50%;
     width: 150px;
   }
 `;

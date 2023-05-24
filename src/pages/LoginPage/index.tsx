@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
@@ -7,9 +7,11 @@ import { validateApiKey } from "../../services/validate";
 
 import * as S from "./styles";
 import GoalImg from "../../assets/goal.svg";
+import Modal from "../../components/Modal";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
   const [form, handleInputChange] = useForm({
     apiKey: "",
     remember: false,
@@ -26,6 +28,14 @@ export const LoginPage = () => {
     });
 
     validate && localStorage.setItem("api_key", form.apiKey);
+  };
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -62,10 +72,22 @@ export const LoginPage = () => {
               <label>Lembrar da chave</label>
             </div>
 
-            <a>Como pegar a chave?</a>
+            <a onClick={handleOpenModal}>Como pegar a chave?</a>
+
+            <Modal isOpen={modalOpen} onClose={handleCloseModal}>
+              <p>
+                Para acessar a aplicação, o usuário deverá criar uma conta na
+                API-Football antes. Assim, ele receberá uma key de autenticação
+                para usar na tela de login da Meu Time, ao invés de usuário e
+                senha. Por baixa dos panos, a aplicação utilizará a key
+                informada para realizar as requisições.
+              </p>
+            </Modal>
           </S.Checkbox>
 
-          <button type="submit">Entrar</button>
+          <button className="btn-submit" type="submit">
+            Entrar
+          </button>
         </S.LoginPageForm>
       </S.WrapperLoginPage>
     </S.ContainerLoginPage>

@@ -1,8 +1,7 @@
 import * as S from "./styles";
-import JogadorImg from "../../assets/jordansportsite.jpg";
 import { useContext, useEffect, useState } from "react";
 import { AppStateContext } from "../../context/AppStateContext";
-import { getPlayers } from "../../services/endpoints";
+import { getPlayers, getTeamStats } from "../../services/endpoints";
 import Chart from "react-google-charts";
 
 const mockData = [
@@ -45,8 +44,10 @@ const options = {
 };
 
 export const TeamPage = () => {
-  const { selectedTeam, selectedSeason } = useContext(AppStateContext);
+  const { selectedTeam, selectedSeason, selectedLeague } =
+    useContext(AppStateContext);
   const [players, setPlayers] = useState([]);
+  const [stats, setStats] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,119 +59,55 @@ export const TeamPage = () => {
         selectedSeason
       );
       setPlayers(fetchedPlayers);
-
-      console.log(players);
     };
 
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const apiKey = localStorage.getItem("api_key");
+
+      const fetchedStats = await getTeamStats(
+        apiKey as string,
+        selectedLeague,
+        selectedSeason,
+        selectedTeam
+      );
+
+      setStats(fetchedStats);
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    console.log(stats);
+  }, [stats]);
+
+  const mappedPlayers = players.map((player: any, index: number) => {
+    return (
+      <div key={index}>
+        <img src={player.player.photo} alt="" />
+        <h2>{player.player.name}</h2>
+        <small>{player.player.age}</small>
+        <small>{player.player.nationality}</small>
+      </div>
+    );
+  });
+
+  useEffect(() => {
+    console.log(stats);
+  }, [stats]);
+
   return (
     <S.ContainerTeamPage>
       <S.WrapperTeamPage>
         <h1>Jogadores</h1>
-        <S.ContainerPlayers>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-          <div>
-            <img src={JogadorImg} alt="" />
-            <h2>Jordan</h2>
-            <small>30 anos</small>
-            <small>Brasileiro</small>
-          </div>
-        </S.ContainerPlayers>
+        <S.ContainerPlayers>{mappedPlayers}</S.ContainerPlayers>
 
         <S.ContainerFormer>
           <h1>Formação</h1>
-          <h2>4-3-2-1</h2>
         </S.ContainerFormer>
 
         <S.ContainerResults>

@@ -1,6 +1,6 @@
 import { keyframes, styled } from "styled-components";
 
-const entering = keyframes`
+export const entering = keyframes`
   from {
     opacity: 0;
     transform: translateY(-200px);
@@ -97,7 +97,7 @@ export const LoginPageForm = styled.form`
     color: #fff;
   }
 
-  button {
+  .btn-submit {
     width: 100%;
     height: 50px;
 
@@ -112,7 +112,7 @@ export const LoginPageForm = styled.form`
     transition: background-color 0.2s ease-in-out;
   }
 
-  button:hover {
+  .btn-submit:hover {
     background-color: #8257e5;
   }
 `;
