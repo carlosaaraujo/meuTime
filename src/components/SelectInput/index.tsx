@@ -11,8 +11,7 @@ export const SelectInput = ({
   options,
   onChange,
   disabled,
-  dependentValue,
-}: SelectInputProps & { disabled?: boolean; dependentValue?: string }) => {
+}: SelectInputProps & { disabled?: boolean }) => {
   return (
     <div>
       <label>{label}</label>

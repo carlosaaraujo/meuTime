@@ -18,7 +18,6 @@ export const TeamPage = () => {
   const [players, setPlayers] = useState([]);
   const [stats, setStats] = useState<any>([]);
   const [formation, setFormation] = useState<string>("");
-  const [gamesStats, setGamesStats] = useState<any>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +32,7 @@ export const TeamPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [selectedSeason, selectedTeam]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +49,7 @@ export const TeamPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [selectedLeague, selectedSeason, selectedTeam]);
 
   useEffect(() => {
     const mostUsedFormation = stats?.lineups?.reduce(
@@ -75,11 +74,8 @@ export const TeamPage = () => {
     // setGamesStats([gamesResults]);
   }, [stats, formation]);
 
-  useEffect(() => {
-    console.log(gamesStats);
-  }, [gamesStats]);
-
   const mappedPlayers = players.map((player: any, index: number) => {
+    console.log(player);
     return (
       <div key={index}>
         <img src={player.player.photo} alt="" />

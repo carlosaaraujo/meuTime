@@ -124,7 +124,6 @@ export const SelectPage = () => {
             }))}
             onChange={setSelectedSeason}
             disabled={!selectedCountry}
-            dependentValue={selectedCountry}
           />
 
           <SelectInput
@@ -136,7 +135,6 @@ export const SelectPage = () => {
             }))}
             onChange={setSelectedLeague}
             disabled={!selectedSeason}
-            dependentValue={selectedLeague}
           />
 
           <SelectInput
@@ -148,7 +146,6 @@ export const SelectPage = () => {
             }))}
             onChange={setSelectedTeam}
             disabled={!selectedLeague}
-            dependentValue={selectedLeague}
           />
 
           <button type="submit">Confirmar</button>
