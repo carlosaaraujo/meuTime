@@ -2,6 +2,7 @@ import * as S from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { AppStateContext } from "../../context/AppStateContext";
 import { getPlayers, getTeamStats } from "../../services/endpoints";
+import { options } from "../../utils/options";
 import Chart from "react-google-charts";
 
 const mockData = [
@@ -11,43 +12,13 @@ const mockData = [
   ["31-45", 11],
 ];
 
-const options = {
-  title: "Gols Marcados por Tempo de Jogo",
-  backgroundColor: "transparent",
-  titleTextStyle: {
-    color: "#e8e8e8",
-  },
-  hAxis: {
-    title: "Tempo de Jogo",
-    minValue: 0,
-    textStyle: {
-      color: "#e8e8e8",
-    },
-    titleTextStyle: {
-      color: "#e8e8e8",
-    },
-  },
-  vAxis: {
-    title: "Total de Gols",
-    textStyle: {
-      color: "#e8e8e8",
-    },
-    titleTextStyle: {
-      color: "#e8e8e8",
-    },
-  },
-  legend: {
-    textStyle: {
-      color: "#e8e8e8",
-    },
-  },
-};
-
 export const TeamPage = () => {
   const { selectedTeam, selectedSeason, selectedLeague } =
     useContext(AppStateContext);
   const [players, setPlayers] = useState([]);
-  const [stats, setStats] = useState([]);
+  const [stats, setStats] = useState<any>([]);
+  const [formation, setFormation] = useState<string>("");
+  const [gamesStats, setGamesStats] = useState<any>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,8 +53,31 @@ export const TeamPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log(stats);
-  }, [stats]);
+    const mostUsedFormation = stats?.lineups?.reduce(
+      (acc: any, lineup: any) => {
+        if (lineup.played > acc.played) {
+          return lineup;
+        }
+        return acc;
+      }
+    );
+
+    setFormation(mostUsedFormation?.formation);
+
+    // const formationResponse = stats.fixtures;
+    // const gamesResults = {
+    //   played: formationResponse.fixtures.played.total.toString(),
+    //   wins: formationResponse.fixtures.wins.total.toString(),
+    //   draws: formationResponse.fixtures.draws.total.toString(),
+    //   loses: formationResponse.fixtures.loses.total.toString(),
+    // };
+
+    // setGamesStats([gamesResults]);
+  }, [stats, formation]);
+
+  useEffect(() => {
+    console.log(gamesStats);
+  }, [gamesStats]);
 
   const mappedPlayers = players.map((player: any, index: number) => {
     return (
@@ -96,10 +90,6 @@ export const TeamPage = () => {
     );
   });
 
-  useEffect(() => {
-    console.log(stats);
-  }, [stats]);
-
   return (
     <S.ContainerTeamPage>
       <S.WrapperTeamPage>
@@ -108,6 +98,7 @@ export const TeamPage = () => {
 
         <S.ContainerFormer>
           <h1>Formação</h1>
+          <h2>{formation}</h2>
         </S.ContainerFormer>
 
         <S.ContainerResults>

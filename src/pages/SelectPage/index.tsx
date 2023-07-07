@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import { useProtected } from "../../hooks/useProtected";
 import {
   getCountries,
   getLeagues,
