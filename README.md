@@ -29,5 +29,9 @@ $ npm run dev
 ```
 ---
 
+## 🚀 Acessar projeto
+Deploy feito pelo surge.
+-  [Acessar Meu Time](https://meu-time.surge.sh/)
+
 Feito com ♥ by [Carlos Araújo](https://github.com/carlosaaraujo)
 
